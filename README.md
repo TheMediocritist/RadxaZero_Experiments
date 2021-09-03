@@ -198,8 +198,17 @@ Download the pre-prepared u-boot from dl.radxa:
 ```
 wget https://dl.radxa.com/zero/images/loader/u-boot.bin.sd.bin
 ```
-Copy Twister image to SD card:
+Find the id of your SD card.
+```
+lsblk
+```
+!! Make sure you have correctly identified your SD card, otherwise you might bork your PC's linux install!!
 
+Copy disk image to SD card:
+```
+dd if=path_to_disk_img/img_file.img of=/dev/your_device_id bs=1M status=progress
+```
+eg.
 ```
 dd if=Twister-OS_Armbian_Focal_20.10_xfce-rockpi-zero-beta2.img of=/dev/sdh bs=1M status=progress
 ```
