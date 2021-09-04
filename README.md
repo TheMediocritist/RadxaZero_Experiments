@@ -9,7 +9,7 @@ Some useful links (that I've grabbed bits from):
 - Official firmware & boot loaders: https://dl.radxa.com/zero/
 
 Other Linux images:
-- Manjaro: https://github.com/manjaro-arm/radxa-zero-images/releases/tag/20210830
+- Manjaro: https://github.com/manjaro-arm/radxa-zero-images/releases/
 - TwisterOS Beta 4: https://drive.google.com/file/d/1aqB7A_EuLGvL7pR8LhP6RatikxvJyy6i/view?usp=sharing
 
 
