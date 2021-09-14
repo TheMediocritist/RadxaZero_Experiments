@@ -277,3 +277,13 @@ Add this to the last line (after APPEND [.....])
 drm_kms_helper.edid_firmware=edid/480x800.bin
 reboot
 ```
+
+## For X based linux
+Find out wtf went wrong
+```
+sudo nano /var/log/Xorg.0.log
+```
+Edit xorg configuration to specify monitor details
+```
+sudo nano /etc/X11/xorg.conf.d/10-Monitors.conf
+```
