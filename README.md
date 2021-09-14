@@ -283,6 +283,40 @@ Find out wtf went wrong
 ```
 sudo nano /var/log/Xorg.0.log
 ```
+
+Something like this...
+```
+Section "Monitor"
+   Identifier "HDMI-1"
+   #VendorName "Monitor Vendor"
+   #ModelName "Monitor Model"
+   Modeline "480x800b" 40.5 480 508 598 640 800 810 816 1056 -hsync +vsync
+   HorizSync 24.0 - 94.0
+   VertRefresh 24.0 - 87.0
+EndSection
+
+Section "Device"
+   Identifier "Device0"
+   #Driver "modesetting"
+   Option "UseEDID" "false"
+EndSection
+
+Section "Screen"
+   Identifier "Screen0"
+   Device "Device0"
+   Monitor "HDMI-1"
+   DefaultDepth 24
+   Option "DPI" "270 x 270"
+   #Option "ModeValidation" "AllowNonEdidModes"
+   Option "ModeValidation" "AllowNonEdidModes, NoMaxPClkCheck, NoEdidMaxPClkCheck, NoMaxSizeCheck, NoHorizSyncCheck, NoVertRefreshCheck, NoVirtualSizeCheck, NoTotalSizeCheck, NoExtendedGpuCapabilitiesCheck" 
+   Option "metamodes" "HDMI-1: 480x800_60.00 +0+0"
+   SubSection "Display"
+     Depth 24
+     Modes "480x800b"
+     Modes "480x800_60.00"
+   EndSubSection
+EndSection
+```
 Edit xorg configuration to specify monitor details
 ```
 sudo nano /etc/X11/xorg.conf.d/10-Monitors.conf
