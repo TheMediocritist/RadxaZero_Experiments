@@ -336,3 +336,48 @@ Edit xorg configuration to specify monitor details
 ```
 sudo nano /etc/X11/xorg.conf.d/10-Monitors.conf
 ```
+
+Find edids:
+```
+sudo find /. |grep -i edid
+```
+Some interesting extras:
+```
+/./sys/kernel/debug/dri/0/HDMI-A-1/edid_override
+/./sys/kernel/debug/dri/0/Composite-1/edid_override
+/./sys/devices/platform/soc/ff900000.vpu/drm/card0/card0-HDMI-A-1/edid
+/./sys/devices/platform/soc/ff900000.vpu/drm/card0/card0-Composite-1/edid
+/./sys/module/drm_kms_helper/parameters/edid_firmware
+/./sys/module/drm/parameters/edid_firmware
+/./sys/module/drm/parameters/edid_fixup
+```
+
+EDID vs X11 format
+```
+Please note that the EDID data structure expects the timing
+values in a different way as compared to the standard X11 format.
+
+X11:
+HTimings:  hdisp hsyncstart hsyncend htotal
+VTimings:  vdisp vsyncstart vsyncend vtotal
+
+EDID:
+#define XPIX hdisp
+#define XBLANK htotal-hdisp
+#define XOFFSET hsyncstart-hdisp
+#define XPULSE hsyncend-hsyncstart
+
+#define YPIX vdisp
+#define YBLANK vtotal-vdisp
+#define YOFFSET (63+(vsyncstart-vdisp))
+#define YPULSE (63+(vsyncend-vsyncstart))
+```
+Source:
+```
+/usr/share/doc/kernel-doc-3.11.4/Documentation/EDID
+```
+
+Convert EDID in text format to .bin format
+```
+xxd -r -p text_dump > binary_dump
+```
