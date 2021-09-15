@@ -261,6 +261,21 @@ Option 2: Extract and modify existing EDID from display
 - Modify - EDID 1.4 allows setting the portrait/landscape flag <- this is promising!
 - Save 480x800.edid
 
+Option 3: extract existing EDID from display (linux)
+```
+sudo find /sys/devices/pci*/*/*/*/*/*HDMI* -name "*edid*" | head -1 | xargs -I{} cp {} edid.bin
+```
+Edit/patch with wxEDID utility
+```
+$ sudo apt install -y libwxgtk3.0-dev
+$ wget https://sourceforge.net/projects/wxedid/files/wxedid-0.0.19.tar.gz/download
+$ tar xvf wxedid-0.0.19.tar.gz
+$ cd wxedid-0.0.19
+$ ./configure --prefix=$HOME
+$ make
+$ make install
+```
+
 Add the edid file to linux firmware folder
 ```
 sudo mkdir /usr/lib/firmware/edid
