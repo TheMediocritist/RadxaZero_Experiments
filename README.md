@@ -262,6 +262,9 @@ Option 2: Extract and modify existing EDID from display
 - Save 480x800.edid
 
 Option 3: extract existing EDID from display (linux)
+Install read-edid and edid-decode tools
+```
+sudo apt install read-edid edid-decode
 ```
 sudo find /sys/devices/pci*/*/*/*/*/*HDMI* -name "*edid*" | head -1 | xargs -I{} cp {} edid.bin
 ```
@@ -297,6 +300,8 @@ reboot
 Find out wtf went wrong
 ```
 sudo nano /var/log/Xorg.0.log
+dmesg -H
+journalctl -b -g "edid" --no-hostname --no-pager
 ```
 
 Something like this...
@@ -352,6 +357,7 @@ Some interesting extras:
 /./sys/module/drm/parameters/edid_fixup
 ```
 
+
 EDID vs X11 format
 ```
 Please note that the EDID data structure expects the timing
@@ -380,4 +386,8 @@ Source:
 Convert EDID in text format to .bin format
 ```
 xxd -r -p text_dump > binary_dump
+```
+Check that it worked:
+```
+cat 400x1280v14.bin | edid-decode
 ```
