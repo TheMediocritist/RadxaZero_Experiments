@@ -265,7 +265,7 @@ Option 3: extract existing EDID from display (linux)
 Install read-edid and edid-decode tools
 ```
 sudo apt install read-edid edid-decode
-```
+
 sudo find /sys/devices/pci*/*/*/*/*/*HDMI* -name "*edid*" | head -1 | xargs -I{} cp {} edid.bin
 ```
 Edit/patch with wxEDID utility
@@ -390,4 +390,13 @@ xxd -r -p text_dump > binary_dump
 Check that it worked:
 ```
 cat 400x1280v14.bin | edid-decode
+```
+
+Tests
+```
+cat /sys/class/drm/card0-HDMI-A-1/modes
+cat /sys/class/drm/card0-HDMI-A-1/enabled
+cat /sys/class/drm/card0-HDMI-A-1/edid
+cat /sys/class/graphics/fb0/virtual_size
+cat /sys/class/graphics/fb0/modes
 ```
