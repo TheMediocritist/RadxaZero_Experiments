@@ -400,3 +400,14 @@ cat /sys/class/drm/card0-HDMI-A-1/edid
 cat /sys/class/graphics/fb0/virtual_size
 cat /sys/class/graphics/fb0/modes
 ```
+
+Using modetest and proptest
+Compile and install these two tools
+```
+git clone https://github.com/freedesktop/mesa-drm
+cd mesa-drm
+meson builddir/
+ninja -C builddir/
+sudo cp /tests/modetest/modetest /usr/bin
+sudo cp /tests/proptest/proptest /usr/bin
+```
