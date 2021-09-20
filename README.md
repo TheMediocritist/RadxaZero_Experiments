@@ -418,6 +418,17 @@ sudo cp builddir/tests/modetest/modetest /usr/bin
 sudo cp builddir/tests/proptest/proptest /usr/bin
 ```
 
+Using drm_info tool
+```
+sudo apt-get install libjson-c-dev
+git clone https://github.com/ascent12/drm_info
+cd drm_info
+meson build
+cd build
+ninja
+sudo ninja install
+```
+
 Running xrandr through ssh:
 ```
 DISPLAY=:0 xrandr
