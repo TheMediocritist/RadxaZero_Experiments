@@ -394,12 +394,18 @@ cat 400x1280v14.bin | edid-decode
 
 Tests
 ```
+cat /sys/class/drm/card0-HDMI-A-1/status
 cat /sys/class/drm/card0-HDMI-A-1/modes
 cat /sys/class/drm/card0-HDMI-A-1/enabled
 cat /sys/class/drm/card0-HDMI-A-1/edid
 cat /sys/class/graphics/fb0/virtual_size
 cat /sys/class/graphics/fb0/modes
+cat /sys/class/drm/card0-HDMI-A-1/edid | edid-decode
+drm_info
 ```
+
+Detailed timings modes from edid are not available in DRM (per drm_info). 
+
 
 Using modetest and proptest
 Compile and install these two tools
@@ -410,4 +416,13 @@ meson builddir/
 ninja -C builddir/
 sudo cp /tests/modetest/modetest /usr/bin
 sudo cp /tests/proptest/proptest /usr/bin
+```
+
+Running xrandr through ssh:
+```
+DISPLAY=:0 xrandr
+DISPLAY=:0 xrandr --output HDMI-1 --mode <width>x<height>
+DISPLAY=:0 xrandr --newmode "480x800_60.00" 40.540 480 524 632 650 800 810 816 1056 +hsync +vsync
+DISPLAY=:0 xrandr --addmode HDMI-1 "480x800_60.00"
+DISPLAY=:0 xrandr -s 480x800_60.00
 ```
