@@ -425,6 +425,7 @@ DISPLAY=:0 xrandr --output HDMI-1 --mode <width>x<height>
 DISPLAY=:0 xrandr --newmode "480x800_60.00" 40.540 480 524 612 640 800 810 816 1056 +hsync +vsync
 DISPLAY=:0 xrandr --addmode HDMI-1 "480x800_60.00"
 DISPLAY=:0 xrandr -s 480x800_60.00
+DISPLAY=:0 xrandr --output HDMI-1 --mode 480x800_60.00
 ```
 
 Running swaymsg through ssh:
