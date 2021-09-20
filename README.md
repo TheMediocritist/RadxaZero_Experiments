@@ -427,6 +427,10 @@ DISPLAY=:0 xrandr --addmode HDMI-1 "480x800_60.00"
 DISPLAY=:0 xrandr -s 480x800_60.00
 DISPLAY=:0 xrandr --output HDMI-1 --mode 480x800_60.00
 ```
+This gives a tidy summary of the current detected EDID:
+```
+DISPLAY=:0 xrandr --props | edid-decode
+```
 
 Running swaymsg through ssh:
 Run locally:
