@@ -284,6 +284,10 @@ Add the edid file to linux firmware folder
 sudo mkdir /usr/lib/firmware/edid
 sudo cp 480x800.bin /usr/lib/firmware/edid
 ```
+You can temporarily over-ride the current edid like this:
+```
+cat 480x800.bin > /sys/kernel/debug/dri/0/HDMI-A-1/edid_override
+```
 
 Now load it at boot
 Edit the config file:
