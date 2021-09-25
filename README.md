@@ -1,6 +1,9 @@
 # Radxa Zero firmware installation/update
 
 This is mainly for my reference, to put instructions all in one place until the wiki is fleshed out.
+
+**Note: I am currently shifting this readme to the [wiki here](https://github.com/TheMediocritist/RadxaZero_Experiments/wiki).**
+
 Some useful links (that I've grabbed bits from):
 
 - Radxa Dev guide: https://github.com/radxa/documentation/tree/master/rs102
